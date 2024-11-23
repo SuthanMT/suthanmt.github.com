@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Universitas Indraprasta PGRI</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <img src="img/unindra.png" alt="Logo Unindra" class="logo">
+        <div class="text-container">
+            <h1>UNIVERSITAS INDRAPRASTA PGRI</h1>
+            <p>Jl. Nangka No.58 Tanjung Barat-JakSel</p>
+        </div>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="data_mahasiswa.html">Data Mahasiswa</a></li>
+            <li><a href="data_dosen.html">Data Dosen</a></li>
+            <li><a href="data_pegawai.html">Data Pegawai</a></li>
+        </ul>
+    </nav>
+    <div class="container">
+        <h2>Buat Tabel Dinamis</h2>
+        <input type="number" id="baris" placeholder="Jumlah Baris" min="1">
+        <input type="number" id="kolom" placeholder="Jumlah Kolom" min="1">
+        <button onclick="buatTabel()">Buat Tabel</button>
+
+        <table id="myTable" border="1"></table>
+    </div>
+    <footer>
+        <p>Created By: [Nama Suthan Muhamad Tauhid] - [NPM 202243500070]</p>
+    </footer>
+    <script>
+        function buatTabel() {
+            const baris = parseInt(document.getElementById("baris").value);
+            const kolom = parseInt(document.getElementById("kolom").value);
+            const table = document.getElementById("myTable");
+            table.innerHTML = '';
+            if (isNaN(baris) || isNaN(kolom) || baris <= 0 || kolom <= 0) {
+                alert("Jumlah baris dan kolom harus lebih besar dari 0.");
+                return;
+            }
+            for (let i = 0; i < baris; i++) {
+                let tr = document.createElement("tr");
+                for (let j = 0; j < kolom; j++) {
+                    let td = document.createElement("td");
+                    td.textContent = `Baris ${i + 1}, Kolom ${j + 1}`;
+                    tr.appendChild(td);
+                }
+
+                table.appendChild(tr);
+            }
+        }
+    </script>
+</body>
+</html>
