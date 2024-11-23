@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Tabel Dinamis</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h2>Buat Tabel Dinamis</h2>
+    <input type="number" id="baris" placeholder="Jumlah Baris" min="1">
+    <input type="number" id="kolom" placeholder="Jumlah Kolom" min="1">
+    <button onclick="buatTabel()">Buat Tabel</button>
+
+    <table id="myTable" border="1"></table>
+
+    <script>
+        function buatTabel() {
+            const baris = parseInt(document.getElementById("baris").value);
+            const kolom = parseInt(document.getElementById("kolom").value);
+            const table = document.getElementById("myTable");
+            table.innerHTML = '';
+            if (isNaN(baris) || isNaN(kolom) || baris <= 0 || kolom <= 0) {
+                alert("Jumlah baris dan kolom harus lebih besar dari 0.");
+                return;
+            }
+            for (let i = 0; i < baris; i++) {
+                let tr = document.createElement("tr");
+                for (let j = 0; j < kolom; j++) {
+                    let td = document.createElement("td");
+                    td.textContent = `Baris ${i + 1}, Kolom ${j + 1}`;
+                    tr.appendChild(td);
+                }
+
+                table.appendChild(tr);
+            }
+        }
+    </script>
+</body>
+</html>
